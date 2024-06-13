@@ -1,0 +1,15 @@
+toc:
+  properties:
+    subcollection: cloud-logs-cli-plugin
+    version: 2
+    audience: service
+    href: /docs/cloud-logs-cli-plugin
+    path: cloud-logs-cli-plugin
+    label: IBM Cloud Logs CLI
+    release-level: beta
+  entries:
+  - navgroup:
+      id: reference
+      topics:
+      - topic: cloud-logs-cli.md
+        navtitle: CLI reference
