@@ -142,8 +142,8 @@ ibmcloud cloud-logs config list
 ```
 {: pre}
 
-## AlertService
-{: #cloud-logs-alert-service-cli}
+## Alerts
+{: #cloud-logs-alerts-cli}
 
 Create and manage alerts.
 
@@ -394,14 +394,7 @@ ibmcloud cloud-logs alert-update \
     --notification-payload-filters exampleString,anotherTestString \
     --meta-labels '[alertsV1MetaLabel]' \
     --meta-labels-strings '[]' \
-    --condition-immediate alertsV2ImmediateConditionEmpty \
-    --condition-less-than alertsV2LessThanCondition \
     --condition-more-than alertsV2MoreThanCondition \
-    --condition-more-than-usual alertsV2MoreThanUsualCondition \
-    --condition-new-value alertsV2NewValueCondition \
-    --condition-flow alertsV2FlowCondition \
-    --condition-unique-count alertsV2UniqueCountCondition \
-    --condition-less-than-usual alertsV2LessThanUsualCondition \
     --filters-severities debug_or_unspecified,verbose,info,warning,error,critical \
     --filters-metadata alertsV1AlertFiltersMetadataFilters \
     --filters-alias monitorQuery \
@@ -676,14 +669,7 @@ ibmcloud cloud-logs alert-create \
     --notification-payload-filters exampleString,anotherTestString \
     --meta-labels '[alertsV1MetaLabel]' \
     --meta-labels-strings '[]' \
-    --condition-immediate alertsV2ImmediateConditionEmpty \
-    --condition-less-than alertsV2LessThanCondition \
     --condition-more-than alertsV2MoreThanCondition \
-    --condition-more-than-usual alertsV2MoreThanUsualCondition \
-    --condition-new-value alertsV2NewValueCondition \
-    --condition-flow alertsV2FlowCondition \
-    --condition-unique-count alertsV2UniqueCountCondition \
-    --condition-less-than-usual alertsV2LessThanUsualCondition \
     --filters-severities debug_or_unspecified,verbose,info,warning,error,critical \
     --filters-metadata alertsV1AlertFiltersMetadataFilters \
     --filters-alias monitorQuery \
@@ -700,8 +686,8 @@ ibmcloud cloud-logs alert-create \
 ```
 {: pre}
 
-## RuleGroupsService
-{: #cloud-logs-rule-groups-service-cli}
+## Rules
+{: #cloud-logs-rules-cli}
 
 Create and manage parsing rules.
 
@@ -711,14 +697,14 @@ Create and manage parsing rules.
 Gets rule group by groupid.
 
 ```text
-ibmcloud cloud-logs rule-group --group-id GROUP-ID
+ibmcloud cloud-logs rule-group --id ID
 ```
 
 
 #### Command options
 {: #cloud-logs-rule-group-cli-options}
 
-`--group-id` (strfmt.UUID)
+`--id` (strfmt.UUID)
 :   The group ID. Required.
 
     The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/`.
@@ -728,7 +714,7 @@ ibmcloud cloud-logs rule-group --group-id GROUP-ID
 
 ```text
 ibmcloud cloud-logs rule-group \
-    --group-id 3dc02998-0b50-4ea8-b68a-4779d716fa1f
+    --id 3dc02998-0b50-4ea8-b68a-4779d716fa1f
 ```
 {: pre}
 
@@ -738,14 +724,14 @@ ibmcloud cloud-logs rule-group \
 Updates rule group by groupid.
 
 ```text
-ibmcloud cloud-logs rule-group-update --group-id GROUP-ID --name NAME --rule-subgroups RULE-SUBGROUPS [--description DESCRIPTION] [--enabled ENABLED] [--rule-matchers RULE-MATCHERS] [--order ORDER]
+ibmcloud cloud-logs rule-group-update --id ID --name NAME --rule-subgroups RULE-SUBGROUPS [--description DESCRIPTION] [--enabled ENABLED] [--rule-matchers RULE-MATCHERS] [--order ORDER]
 ```
 
 
 #### Command options
 {: #cloud-logs-rule-group-update-cli-options}
 
-`--group-id` (strfmt.UUID)
+`--id` (strfmt.UUID)
 :   The group ID. Required.
 
     The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/`.
@@ -787,7 +773,7 @@ ibmcloud cloud-logs rule-group-update --group-id GROUP-ID --name NAME --rule-sub
 
 ```text
 ibmcloud cloud-logs rule-group-update \
-    --group-id 3dc02998-0b50-4ea8-b68a-4779d716fa1f \
+    --id 3dc02998-0b50-4ea8-b68a-4779d716fa1f \
     --name mysql-extractrule \
     --rule-subgroups '[{"rules": [{"name": "mysql-parse", "description": "mysql-parse", "source_field": "text", "parameters": {"parse_parameters": {"destination_field": "text", "rule": "(?P<timestamp>[^,]+),(?P<hostname>[^,]+),(?P<username>[^,]+),(?P<ip>[^,]+),(?P<connectionId>[0-9]+),(?P<queryId>[0-9]+),(?P<operation>[^,]+),(?P<database>[^,]+),\'?(?P<object>.*)\'?,(?P<returnCode>[0-9]+)"}}, "enabled": true, "order": 1}], "enabled": true, "order": 1}]' \
     --description 'mysql audit logs parser' \
@@ -803,14 +789,14 @@ ibmcloud cloud-logs rule-group-update \
 Deletes rule group by groupid.
 
 ```text
-ibmcloud cloud-logs rule-group-delete --group-id GROUP-ID
+ibmcloud cloud-logs rule-group-delete --id ID
 ```
 
 
 #### Command options
 {: #cloud-logs-rule-group-delete-cli-options}
 
-`--group-id` (strfmt.UUID)
+`--id` (strfmt.UUID)
 :   The group ID. Required.
 
     The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/`.
@@ -820,7 +806,7 @@ ibmcloud cloud-logs rule-group-delete --group-id GROUP-ID
 
 ```text
 ibmcloud cloud-logs rule-group-delete \
-    --group-id 3dc02998-0b50-4ea8-b68a-4779d716fa1f
+    --id 3dc02998-0b50-4ea8-b68a-4779d716fa1f
 ```
 {: pre}
 
@@ -901,8 +887,8 @@ ibmcloud cloud-logs rule-group-create \
 ```
 {: pre}
 
-## OutgoingWebhooksService
-{: #cloud-logs-outgoing-webhooks-service-cli}
+## Outbound Integrations
+{: #cloud-logs-outbound-integrations-cli}
 
 Create and manage your Outbound integrations so that you can receive alerts.
 
@@ -939,59 +925,59 @@ ibmcloud cloud-logs outgoing-webhooks \
 Create an Outbound Integration.
 
 ```text
-ibmcloud cloud-logs outgoing-webhook-create [--outgoing-webhook-prototype OUTGOING-WEBHOOK-PROTOTYPE | --outgoing-webhook-type OUTGOING-WEBHOOK-TYPE --outgoing-webhook-name OUTGOING-WEBHOOK-NAME --outgoing-webhook-url OUTGOING-WEBHOOK-URL --outgoing-webhook-ibm-event-notifications OUTGOING-WEBHOOK-IBM-EVENT-NOTIFICATIONS]
+ibmcloud cloud-logs outgoing-webhook-create [--prototype PROTOTYPE | --type TYPE --name NAME --url URL --ibm-event-notifications IBM-EVENT-NOTIFICATIONS]
 ```
 
 
 #### Command options
 {: #cloud-logs-outgoing-webhook-create-cli-options}
 
-`--outgoing-webhook-prototype` ([`OutgoingWebhookPrototype`](#cli-outgoing-webhook-prototype-example-schema))
+`--prototype` ([`OutgoingWebhookPrototype`](#cli-outgoing-webhook-prototype-example-schema))
 :   The input data of the Outbound Integration. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--outgoing-webhook-prototype=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--prototype=@path/to/file.json`.
 
-`--outgoing-webhook-type` (string)
-:   The type of the deployed Outbound Integrations to list. This option provides a value for a sub-field of the JSON option 'outgoing-webhook-prototype'. It is mutually exclusive with that option.
+`--type` (string)
+:   The type of the deployed Outbound Integrations to list. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
     Allowable values are: `ibm_event_notifications`.
 
-`--outgoing-webhook-name` (string)
-:   The name of the Outbound Integration. This option provides a value for a sub-field of the JSON option 'outgoing-webhook-prototype'. It is mutually exclusive with that option.
+`--name` (string)
+:   The name of the Outbound Integration. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
     The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
 
-`--outgoing-webhook-url` (string)
-:   The URL of the Outbound Integration. Null for IBM Event Notifications integration. This option provides a value for a sub-field of the JSON option 'outgoing-webhook-prototype'. It is mutually exclusive with that option.
+`--url` (string)
+:   The URL of the Outbound Integration. Null for IBM Event Notifications integration. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
     The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
 
-`--outgoing-webhook-ibm-event-notifications` ([`OutgoingWebhooksV1IbmEventNotificationsConfig`](#cli-outgoing-webhooks-v1-ibm-event-notifications-config-example-schema))
-:   The configuration of the IBM Event Notifications Outbound Integration. This option provides a value for a sub-field of the JSON option 'outgoing-webhook-prototype'. It is mutually exclusive with that option.
+`--ibm-event-notifications` ([`OutgoingWebhooksV1IbmEventNotificationsConfig`](#cli-outgoing-webhooks-v1-ibm-event-notifications-config-example-schema))
+:   The configuration of the IBM Event Notifications Outbound Integration. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--outgoing-webhook-ibm-event-notifications=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--ibm-event-notifications=@path/to/file.json`.
 
 #### Examples
 {: #cloud-logs-outgoing-webhook-create-examples}
 
 ```text
 ibmcloud cloud-logs outgoing-webhook-create \
-    --outgoing-webhook-prototype '{"type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "ibm_event_notifications": {"event_notifications_instance_id": "9fab83da-98cb-4f18-a7ba-b6f0435c9673", "region_id": "eu-es"}}'
+    --prototype '{"type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "ibm_event_notifications": {"event_notifications_instance_id": "9fab83da-98cb-4f18-a7ba-b6f0435c9673", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}'
 ```
 {: pre}
 
 Alternatively, granular options are available for the sub-fields of JSON string options:
 ```text
 ibmcloud cloud-logs outgoing-webhook-create \
-    --outgoing-webhook-type ibm_event_notifications \
-    --outgoing-webhook-name 'Event Notifications Integration' \
-    --outgoing-webhook-url https://example.com \
-    --outgoing-webhook-ibm-event-notifications outgoingWebhooksV1IbmEventNotificationsConfig
+    --type ibm_event_notifications \
+    --name 'Event Notifications Integration' \
+    --url https://example.com \
+    --ibm-event-notifications outgoingWebhooksV1IbmEventNotificationsConfig
 ```
 {: pre}
 
 ### `ibmcloud cloud-logs outgoing-webhook`
-{: #cloud-logs-cli-outgoing-webhook-command}
+{: #cloud-logs-cli-command}
 
 Gets an Outbound Integration by ID.
 
@@ -1001,7 +987,7 @@ ibmcloud cloud-logs outgoing-webhook --id ID
 
 
 #### Command options
-{: #cloud-logs-outgoing-webhook-cli-options}
+{: #cloud-logs-cli-options}
 
 `--id` (strfmt.UUID)
 :   The ID of the Outbound Integration to delete. Required.
@@ -1009,7 +995,7 @@ ibmcloud cloud-logs outgoing-webhook --id ID
     The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/`.
 
 #### Example
-{: #cloud-logs-outgoing-webhook-examples}
+{: #cloud-logs-examples}
 
 ```text
 ibmcloud cloud-logs outgoing-webhook \
@@ -1023,7 +1009,7 @@ ibmcloud cloud-logs outgoing-webhook \
 Update an Outbound Integration.
 
 ```text
-ibmcloud cloud-logs outgoing-webhook-update --id ID [--outgoing-webhook-prototype OUTGOING-WEBHOOK-PROTOTYPE | --outgoing-webhook-type OUTGOING-WEBHOOK-TYPE --outgoing-webhook-name OUTGOING-WEBHOOK-NAME --outgoing-webhook-url OUTGOING-WEBHOOK-URL --outgoing-webhook-ibm-event-notifications OUTGOING-WEBHOOK-IBM-EVENT-NOTIFICATIONS]
+ibmcloud cloud-logs outgoing-webhook-update --id ID [--prototype PROTOTYPE | --type TYPE --name NAME --url URL --ibm-event-notifications IBM-EVENT-NOTIFICATIONS]
 ```
 
 
@@ -1035,30 +1021,30 @@ ibmcloud cloud-logs outgoing-webhook-update --id ID [--outgoing-webhook-prototyp
 
     The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/`.
 
-`--outgoing-webhook-prototype` ([`OutgoingWebhookPrototype`](#cli-outgoing-webhook-prototype-example-schema))
+`--prototype` ([`OutgoingWebhookPrototype`](#cli-outgoing-webhook-prototype-example-schema))
 :   The input data of the Outbound Integration. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--outgoing-webhook-prototype=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--prototype=@path/to/file.json`.
 
-`--outgoing-webhook-type` (string)
-:   The type of the deployed Outbound Integrations to list. This option provides a value for a sub-field of the JSON option 'outgoing-webhook-prototype'. It is mutually exclusive with that option.
+`--type` (string)
+:   The type of the deployed Outbound Integrations to list. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
     Allowable values are: `ibm_event_notifications`.
 
-`--outgoing-webhook-name` (string)
-:   The name of the Outbound Integration. This option provides a value for a sub-field of the JSON option 'outgoing-webhook-prototype'. It is mutually exclusive with that option.
+`--name` (string)
+:   The name of the Outbound Integration. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
     The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
 
-`--outgoing-webhook-url` (string)
-:   The URL of the Outbound Integration. Null for IBM Event Notifications integration. This option provides a value for a sub-field of the JSON option 'outgoing-webhook-prototype'. It is mutually exclusive with that option.
+`--url` (string)
+:   The URL of the Outbound Integration. Null for IBM Event Notifications integration. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
     The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
 
-`--outgoing-webhook-ibm-event-notifications` ([`OutgoingWebhooksV1IbmEventNotificationsConfig`](#cli-outgoing-webhooks-v1-ibm-event-notifications-config-example-schema))
-:   The configuration of the IBM Event Notifications Outbound Integration. This option provides a value for a sub-field of the JSON option 'outgoing-webhook-prototype'. It is mutually exclusive with that option.
+`--ibm-event-notifications` ([`OutgoingWebhooksV1IbmEventNotificationsConfig`](#cli-outgoing-webhooks-v1-ibm-event-notifications-config-example-schema))
+:   The configuration of the IBM Event Notifications Outbound Integration. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--outgoing-webhook-ibm-event-notifications=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--ibm-event-notifications=@path/to/file.json`.
 
 #### Examples
 {: #cloud-logs-outgoing-webhook-update-examples}
@@ -1066,7 +1052,7 @@ ibmcloud cloud-logs outgoing-webhook-update --id ID [--outgoing-webhook-prototyp
 ```text
 ibmcloud cloud-logs outgoing-webhook-update \
     --id 585bea36-bdd1-4bfb-9a26-51f1f8a12660 \
-    --outgoing-webhook-prototype '{"type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "ibm_event_notifications": {"event_notifications_instance_id": "9fab83da-98cb-4f18-a7ba-b6f0435c9673", "region_id": "eu-es"}}'
+    --prototype '{"type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "ibm_event_notifications": {"event_notifications_instance_id": "9fab83da-98cb-4f18-a7ba-b6f0435c9673", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}'
 ```
 {: pre}
 
@@ -1074,10 +1060,10 @@ Alternatively, granular options are available for the sub-fields of JSON string 
 ```text
 ibmcloud cloud-logs outgoing-webhook-update \
     --id 585bea36-bdd1-4bfb-9a26-51f1f8a12660 \
-    --outgoing-webhook-type ibm_event_notifications \
-    --outgoing-webhook-name 'Event Notifications Integration' \
-    --outgoing-webhook-url https://example.com \
-    --outgoing-webhook-ibm-event-notifications outgoingWebhooksV1IbmEventNotificationsConfig
+    --type ibm_event_notifications \
+    --name 'Event Notifications Integration' \
+    --url https://example.com \
+    --ibm-event-notifications outgoingWebhooksV1IbmEventNotificationsConfig
 ```
 {: pre}
 
@@ -1108,13 +1094,13 @@ ibmcloud cloud-logs outgoing-webhook-delete \
 ```
 {: pre}
 
-## PoliciesService
-{: #cloud-logs-policies-service-cli}
+## Policies
+{: #cloud-logs-policies-cli}
 
 Create and manage TCO policies.
 
 ### `ibmcloud cloud-logs policy`
-{: #cloud-logs-cli-policy-command}
+{: #cloud-logs-cli-command}
 
 Gets policy by id.
 
@@ -1124,7 +1110,7 @@ ibmcloud cloud-logs policy --id ID
 
 
 #### Command options
-{: #cloud-logs-policy-cli-options}
+{: #cloud-logs-cli-options}
 
 `--id` (strfmt.UUID)
 :   ID of policy. Required.
@@ -1132,7 +1118,7 @@ ibmcloud cloud-logs policy --id ID
     The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/`.
 
 #### Example
-{: #cloud-logs-policy-examples}
+{: #cloud-logs-examples}
 
 ```text
 ibmcloud cloud-logs policy \
@@ -1146,7 +1132,7 @@ ibmcloud cloud-logs policy \
 Updates an existing policy.
 
 ```text
-ibmcloud cloud-logs policy-update --id ID [--policy-prototype POLICY-PROTOTYPE | --policy-name POLICY-NAME --policy-description POLICY-DESCRIPTION --policy-priority POLICY-PRIORITY --policy-application-rule POLICY-APPLICATION-RULE --policy-subsystem-rule POLICY-SUBSYSTEM-RULE --policy-archive-retention POLICY-ARCHIVE-RETENTION --policy-log-rules POLICY-LOG-RULES]
+ibmcloud cloud-logs policy-update --id ID [--prototype PROTOTYPE | --name NAME --description DESCRIPTION --priority PRIORITY --application-rule APPLICATION-RULE --subsystem-rule SUBSYSTEM-RULE --archive-retention ARCHIVE-RETENTION --log-rules LOG-RULES]
 ```
 
 
@@ -1158,45 +1144,45 @@ ibmcloud cloud-logs policy-update --id ID [--policy-prototype POLICY-PROTOTYPE |
 
     The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/`.
 
-`--policy-prototype` ([`PolicyPrototype`](#cli-policy-prototype-example-schema))
+`--prototype` ([`PolicyPrototype`](#cli-policy-prototype-example-schema))
 :   Create policy request. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--policy-prototype=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--prototype=@path/to/file.json`.
 
-`--policy-name` (string)
-:   Policy name. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--name` (string)
+:   Policy name. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
     The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
 
-`--policy-description` (string)
-:   Policy description. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--description` (string)
+:   Policy description. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
     The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\-\\s]+$/`.
 
-`--policy-priority` (string)
-:   The data pipeline sources that match the policy rules will go through. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--priority` (string)
+:   The data pipeline sources that match the policy rules will go through. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
     Allowable values are: `type_unspecified`, `type_block`, `type_low`, `type_medium`, `type_high`.
 
-`--policy-application-rule` ([`QuotaV1Rule`](#cli-quota-v1-rule-example-schema))
-:   Rule for matching with application. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--application-rule` ([`QuotaV1Rule`](#cli-quota-v1-rule-example-schema))
+:   Rule for matching with application. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--policy-application-rule=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--application-rule=@path/to/file.json`.
 
-`--policy-subsystem-rule` ([`QuotaV1Rule`](#cli-quota-v1-rule-example-schema))
-:   Rule for matching with application. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--subsystem-rule` ([`QuotaV1Rule`](#cli-quota-v1-rule-example-schema))
+:   Rule for matching with application. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--policy-subsystem-rule=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--subsystem-rule=@path/to/file.json`.
 
-`--policy-archive-retention` ([`QuotaV1ArchiveRetention`](#cli-quota-v1-archive-retention-example-schema))
-:   Archive retention definition. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--archive-retention` ([`QuotaV1ArchiveRetention`](#cli-quota-v1-archive-retention-example-schema))
+:   Archive retention definition. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--policy-archive-retention=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--archive-retention=@path/to/file.json`.
 
-`--policy-log-rules` ([`QuotaV1LogRules`](#cli-quota-v1-log-rules-example-schema))
-:   Log rules. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--log-rules` ([`QuotaV1LogRules`](#cli-quota-v1-log-rules-example-schema))
+:   Log rules. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--policy-log-rules=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--log-rules=@path/to/file.json`.
 
 #### Examples
 {: #cloud-logs-policy-update-examples}
@@ -1204,7 +1190,7 @@ ibmcloud cloud-logs policy-update --id ID [--policy-prototype POLICY-PROTOTYPE |
 ```text
 ibmcloud cloud-logs policy-update \
     --id 3dc02998-0b50-4ea8-b68a-4779d716fa1f \
-    --policy-prototype '{"name": "Med_policy", "description": "Medium policy", "priority": "type_high", "application_rule": {"rule_type_id": "is", "name": "policy-test"}, "subsystem_rule": {"rule_type_id": "is", "name": "policy-test"}, "archive_retention": {"id": "9fab83da-98cb-4f18-a7ba-b6f0435c9673"}, "log_rules": {"severities": ["unspecified","debug","verbose","info","warning","error","critical"]}}'
+    --prototype '{"name": "Med_policy", "description": "Medium policy", "priority": "type_high", "application_rule": {"rule_type_id": "is", "name": "test"}, "subsystem_rule": {"rule_type_id": "is", "name": "test"}, "archive_retention": {"id": "9fab83da-98cb-4f18-a7ba-b6f0435c9673"}, "log_rules": {"severities": ["unspecified","debug","verbose","info","warning","error","critical"]}}'
 ```
 {: pre}
 
@@ -1212,13 +1198,13 @@ Alternatively, granular options are available for the sub-fields of JSON string 
 ```text
 ibmcloud cloud-logs policy-update \
     --id 3dc02998-0b50-4ea8-b68a-4779d716fa1f \
-    --policy-name 'My Policy' \
-    --policy-description 'My Policy Description' \
-    --policy-priority type_high \
-    --policy-application-rule quotaV1Rule \
-    --policy-subsystem-rule quotaV1Rule \
-    --policy-archive-retention quotaV1ArchiveRetention \
-    --policy-log-rules quotaV1LogRules
+    --name 'My Policy' \
+    --description 'My Policy Description' \
+    --priority type_high \
+    --application-rule quotaV1Rule \
+    --subsystem-rule quotaV1Rule \
+    --archive-retention quotaV1ArchiveRetention \
+    --log-rules quotaV1LogRules
 ```
 {: pre}
 
@@ -1249,18 +1235,18 @@ ibmcloud cloud-logs policy-delete \
 ```
 {: pre}
 
-### `ibmcloud cloud-logs company-policies`
-{: #cloud-logs-cli-company-policies-command}
+### `ibmcloud cloud-logs policies`
+{: #cloud-logs-cli-policies-command}
 
 Gets policies.
 
 ```text
-ibmcloud cloud-logs company-policies [--enabled-only ENABLED-ONLY] [--source-type SOURCE-TYPE]
+ibmcloud cloud-logs policies [--enabled-only ENABLED-ONLY] [--source-type SOURCE-TYPE]
 ```
 
 
 #### Command options
-{: #cloud-logs-company-policies-cli-options}
+{: #cloud-logs-policies-cli-options}
 
 `--enabled-only` (bool)
 :   Optionally filter only enabled policies.
@@ -1271,10 +1257,10 @@ ibmcloud cloud-logs company-policies [--enabled-only ENABLED-ONLY] [--source-typ
     Allowable values are: `unspecified`, `logs`.
 
 #### Example
-{: #cloud-logs-company-policies-examples}
+{: #cloud-logs-policies-examples}
 
 ```text
-ibmcloud cloud-logs company-policies \
+ibmcloud cloud-logs policies \
     --enabled-only true \
     --source-type logs
 ```
@@ -1286,635 +1272,77 @@ ibmcloud cloud-logs company-policies \
 Creates a new policy.
 
 ```text
-ibmcloud cloud-logs policy-create [--policy-prototype POLICY-PROTOTYPE | --policy-name POLICY-NAME --policy-description POLICY-DESCRIPTION --policy-priority POLICY-PRIORITY --policy-application-rule POLICY-APPLICATION-RULE --policy-subsystem-rule POLICY-SUBSYSTEM-RULE --policy-archive-retention POLICY-ARCHIVE-RETENTION --policy-log-rules POLICY-LOG-RULES]
+ibmcloud cloud-logs policy-create [--prototype PROTOTYPE | --name NAME --description DESCRIPTION --priority PRIORITY --application-rule APPLICATION-RULE --subsystem-rule SUBSYSTEM-RULE --archive-retention ARCHIVE-RETENTION --log-rules LOG-RULES]
 ```
 
 
 #### Command options
 {: #cloud-logs-policy-create-cli-options}
 
-`--policy-prototype` ([`PolicyPrototype`](#cli-policy-prototype-example-schema))
+`--prototype` ([`PolicyPrototype`](#cli-policy-prototype-example-schema))
 :   Create policy request. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--policy-prototype=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--prototype=@path/to/file.json`.
 
-`--policy-name` (string)
-:   Policy name. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--name` (string)
+:   Policy name. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
     The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
 
-`--policy-description` (string)
-:   Policy description. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--description` (string)
+:   Policy description. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
     The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\-\\s]+$/`.
 
-`--policy-priority` (string)
-:   The data pipeline sources that match the policy rules will go through. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--priority` (string)
+:   The data pipeline sources that match the policy rules will go through. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
     Allowable values are: `type_unspecified`, `type_block`, `type_low`, `type_medium`, `type_high`.
 
-`--policy-application-rule` ([`QuotaV1Rule`](#cli-quota-v1-rule-example-schema))
-:   Rule for matching with application. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--application-rule` ([`QuotaV1Rule`](#cli-quota-v1-rule-example-schema))
+:   Rule for matching with application. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--policy-application-rule=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--application-rule=@path/to/file.json`.
 
-`--policy-subsystem-rule` ([`QuotaV1Rule`](#cli-quota-v1-rule-example-schema))
-:   Rule for matching with application. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--subsystem-rule` ([`QuotaV1Rule`](#cli-quota-v1-rule-example-schema))
+:   Rule for matching with application. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--policy-subsystem-rule=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--subsystem-rule=@path/to/file.json`.
 
-`--policy-archive-retention` ([`QuotaV1ArchiveRetention`](#cli-quota-v1-archive-retention-example-schema))
-:   Archive retention definition. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--archive-retention` ([`QuotaV1ArchiveRetention`](#cli-quota-v1-archive-retention-example-schema))
+:   Archive retention definition. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--policy-archive-retention=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--archive-retention=@path/to/file.json`.
 
-`--policy-log-rules` ([`QuotaV1LogRules`](#cli-quota-v1-log-rules-example-schema))
-:   Log rules. This option provides a value for a sub-field of the JSON option 'policy-prototype'. It is mutually exclusive with that option.
+`--log-rules` ([`QuotaV1LogRules`](#cli-quota-v1-log-rules-example-schema))
+:   Log rules. This option provides a value for a sub-field of the JSON option 'prototype'. It is mutually exclusive with that option.
 
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--policy-log-rules=@path/to/file.json`.
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--log-rules=@path/to/file.json`.
 
 #### Examples
 {: #cloud-logs-policy-create-examples}
 
 ```text
 ibmcloud cloud-logs policy-create \
-    --policy-prototype '{"name": "Med_policy", "description": "Medium Policy", "priority": "type_high", "application_rule": {"rule_type_id": "is", "name": "policy-test"}, "subsystem_rule": {"rule_type_id": "is", "name": "policy-test"}, "archive_retention": {"id": "9fab83da-98cb-4f18-a7ba-b6f0435c9673"}, "log_rules": {"severities": ["unspecified","debug","verbose","info","warning","error","critical"]}}'
+    --prototype '{"name": "Med_policy", "description": "Medium Policy", "priority": "type_high", "application_rule": {"rule_type_id": "is", "name": "test"}, "subsystem_rule": {"rule_type_id": "is", "name": "test"}, "archive_retention": {"id": "9fab83da-98cb-4f18-a7ba-b6f0435c9673"}, "log_rules": {"severities": ["unspecified","debug","verbose","info","warning","error","critical"]}}'
 ```
 {: pre}
 
 Alternatively, granular options are available for the sub-fields of JSON string options:
 ```text
 ibmcloud cloud-logs policy-create \
-    --policy-name 'My Policy' \
-    --policy-description 'My Policy Description' \
-    --policy-priority type_high \
-    --policy-application-rule quotaV1Rule \
-    --policy-subsystem-rule quotaV1Rule \
-    --policy-archive-retention quotaV1ArchiveRetention \
-    --policy-log-rules quotaV1LogRules
+    --name 'My Policy' \
+    --description 'My Policy Description' \
+    --priority type_high \
+    --application-rule quotaV1Rule \
+    --subsystem-rule quotaV1Rule \
+    --archive-retention quotaV1ArchiveRetention \
+    --log-rules quotaV1LogRules
 ```
 {: pre}
 
-## DashboardsService
-{: #cloud-logs-dashboards-service-cli}
-
-API to manage your dashboards.
-
-### `ibmcloud cloud-logs dashboard-create`
-{: #cloud-logs-cli-dashboard-create-command}
-
-Creates a new dashboard.
-
-```text
-ibmcloud cloud-logs dashboard-create [--dashboard DASHBOARD | --dashboard-href DASHBOARD-HREF --dashboard-id DASHBOARD-ID --dashboard-name DASHBOARD-NAME --dashboard-description DASHBOARD-DESCRIPTION --dashboard-layout DASHBOARD-LAYOUT --dashboard-variables DASHBOARD-VARIABLES --dashboard-filters DASHBOARD-FILTERS --dashboard-annotations DASHBOARD-ANNOTATIONS --dashboard-absolute-time-frame DASHBOARD-ABSOLUTE-TIME-FRAME --dashboard-relative-time-frame DASHBOARD-RELATIVE-TIME-FRAME --dashboard-folder-id DASHBOARD-FOLDER-ID --dashboard-folder-path DASHBOARD-FOLDER-PATH --dashboard-false DASHBOARD-FALSE --dashboard-two-minutes DASHBOARD-TWO-MINUTES --dashboard-five-minutes DASHBOARD-FIVE-MINUTES]
-```
-
-
-#### Command options
-{: #cloud-logs-dashboard-create-cli-options}
-
-`--dashboard` ([`Dashboard`](#cli-dashboard-example-schema))
-:   Dashboard represents the structure and configuration of a Coralogix Custom Dashboard. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard=@path/to/file.json`.
-
-`--dashboard-href` (string)
-:   Unique identifier for the dashboard. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `21` characters. The minimum length is `21` characters. The value must match regular expression `/^[a-zA-Z0-9]{21}$/`.
-
-`--dashboard-id` (string)
-:   Unique identifier for the dashboard. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `21` characters. The minimum length is `21` characters. The value must match regular expression `/^[a-zA-Z0-9]{21}$/`.
-
-`--dashboard-name` (string)
-:   Display name of the dashboard. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `100` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-`--dashboard-description` (string)
-:   Brief description or summary of the dashboard's purpose or content. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `200` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-`--dashboard-layout` ([`ApisDashboardsV1AstLayout`](#cli-apis-dashboards-v1-ast-layout-example-schema))
-:   Layout configuration for the dashboard's visual elements. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-layout=@path/to/file.json`.
-
-`--dashboard-variables` ([`ApisDashboardsV1AstVariable[]`](#cli-apis-dashboards-v1-ast-variable-example-schema))
-:   List of variables that can be used within the dashboard for dynamic content. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `100` items. The minimum length is `0` items.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-variables=@path/to/file.json`.
-
-`--dashboard-filters` ([`ApisDashboardsV1AstFilter[]`](#cli-apis-dashboards-v1-ast-filter-example-schema))
-:   List of filters that can be applied to the dashboard's data. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `100` items. The minimum length is `0` items.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-filters=@path/to/file.json`.
-
-`--dashboard-annotations` ([`ApisDashboardsV1AstAnnotation[]`](#cli-apis-dashboards-v1-ast-annotation-example-schema))
-:   List of annotations that can be applied to the dashboard's visual elements. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `100` items. The minimum length is `0` items.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-annotations=@path/to/file.json`.
-
-`--dashboard-absolute-time-frame` ([`ApisDashboardsV1CommonTimeFrame`](#cli-apis-dashboards-v1-common-time-frame-example-schema))
-:   Absolute time frame specifying a fixed start and end time. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-absolute-time-frame=@path/to/file.json`.
-
-`--dashboard-relative-time-frame` (string)
-:   Relative time frame specifying a duration from the current time. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `10` characters. The minimum length is `2` characters. The value must match regular expression `/^[0-9]+[smhdw]?$/`.
-
-`--dashboard-folder-id` ([`ApisDashboardsV1UUID`](#cli-apis-dashboards-v1-uuid-example-schema))
-:   Unique identifier of the folder containing the dashboard. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-folder-id=@path/to/file.json`.
-
-`--dashboard-folder-path` ([`ApisDashboardsV1AstFolderPath`](#cli-apis-dashboards-v1-ast-folder-path-example-schema))
-:   Path of the folder containing the dashboard. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-folder-path=@path/to/file.json`.
-
-`--dashboard-false` ([`ApisDashboardsV1AstDashboardAutoRefreshOffEmpty`](#cli-apis-dashboards-v1-ast-dashboard-auto-refresh-off-empty-example-schema))
-:   Auto refresh interval is set to off. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-false=@path/to/file.json`.
-
-`--dashboard-two-minutes` ([`ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty`](#cli-apis-dashboards-v1-ast-dashboard-auto-refresh-two-minutes-empty-example-schema))
-:   Auto refresh interval is set to two minutes. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-two-minutes=@path/to/file.json`.
-
-`--dashboard-five-minutes` ([`ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty`](#cli-apis-dashboards-v1-ast-dashboard-auto-refresh-five-minutes-empty-example-schema))
-:   Auto refresh interval is set to five minutes. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-five-minutes=@path/to/file.json`.
-
-#### Examples
-{: #cloud-logs-dashboard-create-examples}
-
-```text
-ibmcloud cloud-logs dashboard-create \
-    --dashboard '{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "DataUsageToMetrics Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "exampleString", "id": {"value": "9fab83da-98cb-4f18-a7ba-b6f0435c9673"}, "rows": [{"href": "exampleString", "id": {"value": "9fab83da-98cb-4f18-a7ba-b6f0435c9673"}, "appearance": {"height": 19}, "widgets": [{"href": "exampleString", "id": {"value": "9fab83da-98cb-4f18-a7ba-b6f0435c9673"}, "title": "Size", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["unspecified","min","max","sum","avg","last","name"], "group_by_query": true}, "tooltip": {"show_labels": false, "type": "all"}, "query_definitions": [{"id": "9fab83da-98cb-4f18-a7ba-b6f0435c9673", "query": {"metrics": {"promql_query": {"value": "sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)"}, "filters": [{"label": "service", "operator": {"equals": {"selection": {"all": {}}}}}]}}, "series_name_template": "{{severity}}", "series_count_limit": "20", "unit": "usd", "scale_type": "linear", "name": "Query1", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 96}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["applicationname"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["applicationname"], "scope": "metadata"}}}, "enabled": true, "collapsed": false}], "annotations": [{"href": "9fab83da-98cb-4f18-a7ba-b6f0435c9673", "id": "9fab83da-98cb-4f18-a7ba-b6f0435c9673", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "exampleString", "labels": ["exampleString","anotherTestString"]}}}], "relative_time_frame": "86400s"}'
-```
-{: pre}
-
-Alternatively, granular options are available for the sub-fields of JSON string options:
-```text
-ibmcloud cloud-logs dashboard-create \
-    --dashboard-href 6U1Q8Hpa263Se8PkRKaiE \
-    --dashboard-id 6U1Q8Hpa263Se8PkRKaiE \
-    --dashboard-name 'My Dashboard' \
-    --dashboard-description 'This dashboard shows the performance of our production environment.' \
-    --dashboard-layout apisDashboardsV1AstLayout \
-    --dashboard-variables '[apisDashboardsV1AstVariable]' \
-    --dashboard-filters '[apisDashboardsV1AstFilter]' \
-    --dashboard-annotations '[apisDashboardsV1AstAnnotation]' \
-    --dashboard-relative-time-frame 1d
-```
-{: pre}
-
-### `ibmcloud cloud-logs dashboard`
-{: #cloud-logs-cli-dashboard-command}
-
-Gets an existing dashboard.
-
-```text
-ibmcloud cloud-logs dashboard --dashboard-id DASHBOARD-ID
-```
-
-
-#### Command options
-{: #cloud-logs-dashboard-cli-options}
-
-`--dashboard-id` (string)
-:   The ID of the dashboard. Required.
-
-    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-#### Example
-{: #cloud-logs-dashboard-examples}
-
-```text
-ibmcloud cloud-logs dashboard \
-    --dashboard-id exampleString
-```
-{: pre}
-
-### `ibmcloud cloud-logs dashboard-replace`
-{: #cloud-logs-cli-dashboard-replace-command}
-
-Replaces an existing dashboard.
-
-```text
-ibmcloud cloud-logs dashboard-replace --dashboard-id DASHBOARD-ID [--dashboard DASHBOARD | --dashboard-href DASHBOARD-HREF --dashboard-name DASHBOARD-NAME --dashboard-description DASHBOARD-DESCRIPTION --dashboard-layout DASHBOARD-LAYOUT --dashboard-variables DASHBOARD-VARIABLES --dashboard-filters DASHBOARD-FILTERS --dashboard-annotations DASHBOARD-ANNOTATIONS --dashboard-absolute-time-frame DASHBOARD-ABSOLUTE-TIME-FRAME --dashboard-relative-time-frame DASHBOARD-RELATIVE-TIME-FRAME --dashboard-folder-id DASHBOARD-FOLDER-ID --dashboard-folder-path DASHBOARD-FOLDER-PATH --dashboard-false DASHBOARD-FALSE --dashboard-two-minutes DASHBOARD-TWO-MINUTES --dashboard-five-minutes DASHBOARD-FIVE-MINUTES]
-```
-
-
-#### Command options
-{: #cloud-logs-dashboard-replace-cli-options}
-
-`--dashboard-id` (string)
-:   The ID of the dashboard. Required.
-
-    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-`--dashboard` ([`Dashboard`](#cli-dashboard-example-schema))
-:   Dashboard represents the structure and configuration of a Coralogix Custom Dashboard. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard=@path/to/file.json`.
-
-`--dashboard-href` (string)
-:   Unique identifier for the dashboard. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `21` characters. The minimum length is `21` characters. The value must match regular expression `/^[a-zA-Z0-9]{21}$/`.
-
-`--dashboard-name` (string)
-:   Display name of the dashboard. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `100` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-`--dashboard-description` (string)
-:   Brief description or summary of the dashboard's purpose or content. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `200` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-`--dashboard-layout` ([`ApisDashboardsV1AstLayout`](#cli-apis-dashboards-v1-ast-layout-example-schema))
-:   Layout configuration for the dashboard's visual elements. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-layout=@path/to/file.json`.
-
-`--dashboard-variables` ([`ApisDashboardsV1AstVariable[]`](#cli-apis-dashboards-v1-ast-variable-example-schema))
-:   List of variables that can be used within the dashboard for dynamic content. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `100` items. The minimum length is `0` items.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-variables=@path/to/file.json`.
-
-`--dashboard-filters` ([`ApisDashboardsV1AstFilter[]`](#cli-apis-dashboards-v1-ast-filter-example-schema))
-:   List of filters that can be applied to the dashboard's data. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `100` items. The minimum length is `0` items.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-filters=@path/to/file.json`.
-
-`--dashboard-annotations` ([`ApisDashboardsV1AstAnnotation[]`](#cli-apis-dashboards-v1-ast-annotation-example-schema))
-:   List of annotations that can be applied to the dashboard's visual elements. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `100` items. The minimum length is `0` items.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-annotations=@path/to/file.json`.
-
-`--dashboard-absolute-time-frame` ([`ApisDashboardsV1CommonTimeFrame`](#cli-apis-dashboards-v1-common-time-frame-example-schema))
-:   Absolute time frame specifying a fixed start and end time. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-absolute-time-frame=@path/to/file.json`.
-
-`--dashboard-relative-time-frame` (string)
-:   Relative time frame specifying a duration from the current time. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    The maximum length is `10` characters. The minimum length is `2` characters. The value must match regular expression `/^[0-9]+[smhdw]?$/`.
-
-`--dashboard-folder-id` ([`ApisDashboardsV1UUID`](#cli-apis-dashboards-v1-uuid-example-schema))
-:   Unique identifier of the folder containing the dashboard. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-folder-id=@path/to/file.json`.
-
-`--dashboard-folder-path` ([`ApisDashboardsV1AstFolderPath`](#cli-apis-dashboards-v1-ast-folder-path-example-schema))
-:   Path of the folder containing the dashboard. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-folder-path=@path/to/file.json`.
-
-`--dashboard-false` ([`ApisDashboardsV1AstDashboardAutoRefreshOffEmpty`](#cli-apis-dashboards-v1-ast-dashboard-auto-refresh-off-empty-example-schema))
-:   Auto refresh interval is set to off. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-false=@path/to/file.json`.
-
-`--dashboard-two-minutes` ([`ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty`](#cli-apis-dashboards-v1-ast-dashboard-auto-refresh-two-minutes-empty-example-schema))
-:   Auto refresh interval is set to two minutes. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-two-minutes=@path/to/file.json`.
-
-`--dashboard-five-minutes` ([`ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty`](#cli-apis-dashboards-v1-ast-dashboard-auto-refresh-five-minutes-empty-example-schema))
-:   Auto refresh interval is set to five minutes. This option provides a value for a sub-field of the JSON option 'dashboard'. It is mutually exclusive with that option.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--dashboard-five-minutes=@path/to/file.json`.
-
-#### Examples
-{: #cloud-logs-dashboard-replace-examples}
-
-```text
-ibmcloud cloud-logs dashboard-replace \
-    --dashboard-id exampleString \
-    --dashboard '{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "DataUsageToMetrics Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "exampleString", "id": {"value": "9fab83da-98cb-4f18-a7ba-b6f0435c9673"}, "rows": [{"href": "exampleString", "id": {"value": "9fab83da-98cb-4f18-a7ba-b6f0435c9673"}, "appearance": {"height": 19}, "widgets": [{"href": "exampleString", "id": {"value": "9fab83da-98cb-4f18-a7ba-b6f0435c9673"}, "title": "Size", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["unspecified","min","max","sum","avg","last","name"], "group_by_query": true}, "tooltip": {"show_labels": false, "type": "all"}, "query_definitions": [{"id": "9fab83da-98cb-4f18-a7ba-b6f0435c9673", "query": {"metrics": {"promql_query": {"value": "sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)"}, "filters": [{"label": "service", "operator": {"equals": {"selection": {"all": {}}}}}]}}, "series_name_template": "{{severity}}", "series_count_limit": "20", "unit": "usd", "scale_type": "linear", "name": "Query1", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 96}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["applicationname"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["applicationname"], "scope": "metadata"}}}, "enabled": true, "collapsed": false}], "annotations": [{"href": "9fab83da-98cb-4f18-a7ba-b6f0435c9673", "id": "9fab83da-98cb-4f18-a7ba-b6f0435c9673", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "exampleString", "labels": ["exampleString","anotherTestString"]}}}], "relative_time_frame": "86400s"}'
-```
-{: pre}
-
-Alternatively, granular options are available for the sub-fields of JSON string options:
-```text
-ibmcloud cloud-logs dashboard-replace \
-    --dashboard-id exampleString \
-    --dashboard-href 6U1Q8Hpa263Se8PkRKaiE \
-    --dashboard-name 'My Dashboard' \
-    --dashboard-description 'This dashboard shows the performance of our production environment.' \
-    --dashboard-layout apisDashboardsV1AstLayout \
-    --dashboard-variables '[apisDashboardsV1AstVariable]' \
-    --dashboard-filters '[apisDashboardsV1AstFilter]' \
-    --dashboard-annotations '[apisDashboardsV1AstAnnotation]' \
-    --dashboard-relative-time-frame 1d
-```
-{: pre}
-
-### `ibmcloud cloud-logs dashboard-delete`
-{: #cloud-logs-cli-dashboard-delete-command}
-
-Deletes an existing dashboard.
-
-```text
-ibmcloud cloud-logs dashboard-delete --dashboard-id DASHBOARD-ID
-```
-
-
-#### Command options
-{: #cloud-logs-dashboard-delete-cli-options}
-
-`--dashboard-id` (string)
-:   The ID of the dashboard. Required.
-
-    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-#### Example
-{: #cloud-logs-dashboard-delete-examples}
-
-```text
-ibmcloud cloud-logs dashboard-delete \
-    --dashboard-id exampleString
-```
-{: pre}
-
-### `ibmcloud cloud-logs pin-dashboard`
-{: #cloud-logs-cli-pin-dashboard-command}
-
-Add dashboard to the favorite folder.
-
-```text
-ibmcloud cloud-logs pin-dashboard --dashboard-id DASHBOARD-ID
-```
-
-
-#### Command options
-{: #cloud-logs-pin-dashboard-cli-options}
-
-`--dashboard-id` (string)
-:   The ID of the dashboard. Required.
-
-    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-#### Example
-{: #cloud-logs-pin-dashboard-examples}
-
-```text
-ibmcloud cloud-logs pin-dashboard \
-    --dashboard-id exampleString
-```
-{: pre}
-
-### `ibmcloud cloud-logs unpin-dashboard`
-{: #cloud-logs-cli-unpin-dashboard-command}
-
-Remove dashboard to the favorite folder.
-
-```text
-ibmcloud cloud-logs unpin-dashboard --dashboard-id DASHBOARD-ID
-```
-
-
-#### Command options
-{: #cloud-logs-unpin-dashboard-cli-options}
-
-`--dashboard-id` (string)
-:   The ID of the dashboard. Required.
-
-    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-#### Example
-{: #cloud-logs-unpin-dashboard-examples}
-
-```text
-ibmcloud cloud-logs unpin-dashboard \
-    --dashboard-id exampleString
-```
-{: pre}
-
-### `ibmcloud cloud-logs default-dashboard-replace`
-{: #cloud-logs-cli-default-dashboard-replace-command}
-
-Set dashboard as the default dashboard for the user.
-
-```text
-ibmcloud cloud-logs default-dashboard-replace --dashboard-id DASHBOARD-ID
-```
-
-
-#### Command options
-{: #cloud-logs-default-dashboard-replace-cli-options}
-
-`--dashboard-id` (string)
-:   The ID of the dashboard. Required.
-
-    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-#### Example
-{: #cloud-logs-default-dashboard-replace-examples}
-
-```text
-ibmcloud cloud-logs default-dashboard-replace \
-    --dashboard-id exampleString
-```
-{: pre}
-
-### `ibmcloud cloud-logs assign-dashboard-folder`
-{: #cloud-logs-cli-assign-dashboard-folder-command}
-
-Assign a dashboard to a folder.
-
-```text
-ibmcloud cloud-logs assign-dashboard-folder --dashboard-id DASHBOARD-ID --folder-id FOLDER-ID
-```
-
-
-#### Command options
-{: #cloud-logs-assign-dashboard-folder-cli-options}
-
-`--dashboard-id` (string)
-:   The ID of the dashboard. Required.
-
-    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-`--folder-id` (string)
-:   The folder ID could be null to assign the dashboard to root. Required.
-
-    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-#### Example
-{: #cloud-logs-assign-dashboard-folder-examples}
-
-```text
-ibmcloud cloud-logs assign-dashboard-folder \
-    --dashboard-id exampleString \
-    --folder-id exampleString
-```
-{: pre}
-
-## DashboardFoldersService
-{: #cloud-logs-dashboard-folders-service-cli}
-
-API to manage your dashboard folders.
-
-### `ibmcloud cloud-logs dashboard-folders`
-{: #cloud-logs-cli-dashboard-folders-command}
-
-List all dashboard folders.
-
-```text
-ibmcloud cloud-logs dashboard-folders
-```
-
-
-#### Example
-{: #cloud-logs-dashboard-folders-examples}
-
-```text
-ibmcloud cloud-logs dashboard-folders
-```
-{: pre}
-
-### `ibmcloud cloud-logs dashboard-folder-create`
-{: #cloud-logs-cli-dashboard-folder-create-command}
-
-Create a dashboard folder.
-
-```text
-ibmcloud cloud-logs dashboard-folder-create --name NAME [--id ID] [--parent-id PARENT-ID]
-```
-
-
-#### Command options
-{: #cloud-logs-dashboard-folder-create-cli-options}
-
-`--name` (string)
-:   The dashboard folder name, required. Required.
-
-    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-`--id` (strfmt.UUID)
-:   The dashboard folder ID, uuid.
-
-    The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-`--parent-id` (strfmt.UUID)
-:   The dashboard folder parent ID, optional. If not set, the folder is a root
- folder, if set, the folder is a subfolder of the parent folder and needs to
- be a uuid.
-
-    The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-#### Example
-{: #cloud-logs-dashboard-folder-create-examples}
-
-```text
-ibmcloud cloud-logs dashboard-folder-create \
-    --name 'My Folder' \
-    --id 3dc02998-0b50-4ea8-b68a-4779d716fa1f \
-    --parent-id 3dc02998-0b50-4ea8-b68a-4779d716fa1f
-```
-{: pre}
-
-### `ibmcloud cloud-logs dashboard-folder-replace`
-{: #cloud-logs-cli-dashboard-folder-replace-command}
-
-Update a dashboard folder.
-
-```text
-ibmcloud cloud-logs dashboard-folder-replace --folder-id FOLDER-ID --name NAME [--id ID] [--parent-id PARENT-ID]
-```
-
-
-#### Command options
-{: #cloud-logs-dashboard-folder-replace-cli-options}
-
-`--folder-id` (strfmt.UUID)
-:   The folder ID. Required.
-
-    The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-`--name` (string)
-:   The dashboard folder name, required. Required.
-
-    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-`--id` (strfmt.UUID)
-:   The dashboard folder ID, uuid.
-
-    The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-`--parent-id` (strfmt.UUID)
-:   The dashboard folder parent ID, optional. If not set, the folder is a root
- folder, if set, the folder is a subfolder of the parent folder and needs to
- be a uuid.
-
-    The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-#### Example
-{: #cloud-logs-dashboard-folder-replace-examples}
-
-```text
-ibmcloud cloud-logs dashboard-folder-replace \
-    --folder-id 3dc02998-0b50-4ea8-b68a-4779d716fa1f \
-    --name 'My Folder' \
-    --id 3dc02998-0b50-4ea8-b68a-4779d716fa1f \
-    --parent-id 3dc02998-0b50-4ea8-b68a-4779d716fa1f
-```
-{: pre}
-
-### `ibmcloud cloud-logs dashboard-folder-delete`
-{: #cloud-logs-cli-dashboard-folder-delete-command}
-
-Delete a dashboard folder.
-
-```text
-ibmcloud cloud-logs dashboard-folder-delete --folder-id FOLDER-ID
-```
-
-
-#### Command options
-{: #cloud-logs-dashboard-folder-delete-cli-options}
-
-`--folder-id` (strfmt.UUID)
-:   The folder ID. Required.
-
-    The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
-#### Example
-{: #cloud-logs-dashboard-folder-delete-examples}
-
-```text
-ibmcloud cloud-logs dashboard-folder-delete \
-    --folder-id 3dc02998-0b50-4ea8-b68a-4779d716fa1f
-```
-{: pre}
-
-## Events2MetricService
-{: #cloud-logs-events2-metric-service-cli}
+## Events to metrics
+{: #cloud-logs-events-to-metrics-cli}
 
 Create and manage your events to metrics definitions.
 
@@ -1927,6 +1355,9 @@ Lists event to metrics definitions.
 ibmcloud cloud-logs events2metrics-list
 ```
 
+#### Aliases
+
+`events2metrics-list`, `e2m-list`
 
 #### Example
 {: #cloud-logs-events2metrics-list-examples}
@@ -1945,6 +1376,9 @@ Creates event to metrics definitions.
 ibmcloud cloud-logs events2metrics-create [--event2-metric-prototype EVENT2-METRIC-PROTOTYPE | --event2-metric-name EVENT2-METRIC-NAME --event2-metric-description EVENT2-METRIC-DESCRIPTION --event2-metric-permutations-limit EVENT2-METRIC-PERMUTATIONS-LIMIT --event2-metric-metric-labels EVENT2-METRIC-METRIC-LABELS --event2-metric-metric-fields EVENT2-METRIC-METRIC-FIELDS --event2-metric-type EVENT2-METRIC-TYPE --event2-metric-logs-query EVENT2-METRIC-LOGS-QUERY]
 ```
 
+#### Aliases
+
+`events2metrics-create`, `e2m-create`
 
 #### Command options
 {: #cloud-logs-events2metrics-create-cli-options}
@@ -2022,6 +1456,9 @@ Gets event to metrics definitions by id.
 ibmcloud cloud-logs events2metrics --id ID
 ```
 
+#### Aliases
+
+`events2metrics`, `e2m`
 
 #### Command options
 {: #cloud-logs-events2metrics-cli-options}
@@ -2040,18 +1477,21 @@ ibmcloud cloud-logs events2metrics \
 ```
 {: pre}
 
-### `ibmcloud cloud-logs events2metrics-replace`
-{: #cloud-logs-cli-events2metrics-replace-command}
+### `ibmcloud cloud-logs events2metrics-update`
+{: #cloud-logs-cli-events2metrics-update-command}
 
 Updates event to metrics definitions.
 
 ```text
-ibmcloud cloud-logs events2metrics-replace --id ID [--event2-metric-prototype EVENT2-METRIC-PROTOTYPE | --event2-metric-name EVENT2-METRIC-NAME --event2-metric-description EVENT2-METRIC-DESCRIPTION --event2-metric-permutations-limit EVENT2-METRIC-PERMUTATIONS-LIMIT --event2-metric-metric-labels EVENT2-METRIC-METRIC-LABELS --event2-metric-metric-fields EVENT2-METRIC-METRIC-FIELDS --event2-metric-type EVENT2-METRIC-TYPE --event2-metric-logs-query EVENT2-METRIC-LOGS-QUERY]
+ibmcloud cloud-logs events2metrics-update --id ID [--event2-metric-prototype EVENT2-METRIC-PROTOTYPE | --event2-metric-name EVENT2-METRIC-NAME --event2-metric-description EVENT2-METRIC-DESCRIPTION --event2-metric-permutations-limit EVENT2-METRIC-PERMUTATIONS-LIMIT --event2-metric-metric-labels EVENT2-METRIC-METRIC-LABELS --event2-metric-metric-fields EVENT2-METRIC-METRIC-FIELDS --event2-metric-type EVENT2-METRIC-TYPE --event2-metric-logs-query EVENT2-METRIC-LOGS-QUERY]
 ```
 
+#### Aliases
+
+`events2metrics-update`, `e2m-update`
 
 #### Command options
-{: #cloud-logs-events2metrics-replace-cli-options}
+{: #cloud-logs-events2metrics-update-cli-options}
 
 `--id` (string)
 :   ID of e2m to be deleted. Required.
@@ -2101,10 +1541,10 @@ ibmcloud cloud-logs events2metrics-replace --id ID [--event2-metric-prototype EV
     Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--event2-metric-logs-query=@path/to/file.json`.
 
 #### Examples
-{: #cloud-logs-events2metrics-replace-examples}
+{: #cloud-logs-events2metrics-update-examples}
 
 ```text
-ibmcloud cloud-logs events2metrics-replace \
+ibmcloud cloud-logs events2metrics-update \
     --id d6a3658e-78d2-47d0-9b81-b2c551f01b09 \
     --event2-metric-prototype '{"name": "test em2", "description": "Test e2m updated", "permutations_limit": 1, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "logs_query": {"lucene": "logs", "alias": "new_query", "applicationname_filters": ["app_name"], "subsystemname_filters": ["sub_name"], "severity_filters": ["unspecified","debug","verbose","info","warning","error","critical"]}}'
 ```
@@ -2112,7 +1552,7 @@ ibmcloud cloud-logs events2metrics-replace \
 
 Alternatively, granular options are available for the sub-fields of JSON string options:
 ```text
-ibmcloud cloud-logs events2metrics-replace \
+ibmcloud cloud-logs events2metrics-update \
     --id d6a3658e-78d2-47d0-9b81-b2c551f01b09 \
     --event2-metric-name 'Service catalog latency' \
     --event2-metric-description 'avg and max the latency of catalog service' \
@@ -2133,6 +1573,9 @@ Deletes event to metrics definitions by id.
 ibmcloud cloud-logs events2metrics-delete --id ID
 ```
 
+#### Aliases
+
+`events2metrics-delete`, `e2m-delete`
 
 #### Command options
 {: #cloud-logs-events2metrics-delete-cli-options}
@@ -2151,8 +1594,8 @@ ibmcloud cloud-logs events2metrics-delete \
 ```
 {: pre}
 
-## ViewsService
-{: #cloud-logs-views-service-cli}
+## Views
+{: #cloud-logs-views-cli}
 
 Create and manage views.
 
@@ -2180,7 +1623,7 @@ ibmcloud cloud-logs views
 Creates a new view.
 
 ```text
-ibmcloud cloud-logs view-create --name NAME [--search-query SEARCH-QUERY | --search-query-query SEARCH-QUERY-QUERY] [--time-selection TIME-SELECTION | --time-selection-quick-selection TIME-SELECTION-QUICK-SELECTION --time-selection-custom-selection TIME-SELECTION-CUSTOM-SELECTION] [--filters FILTERS | --filters-filters FILTERS-FILTERS] [--folder-id FOLDER-ID]
+ibmcloud cloud-logs view-create --name NAME [--time-selection TIME-SELECTION | --time-selection-quick-selection TIME-SELECTION-QUICK-SELECTION --time-selection-custom-selection TIME-SELECTION-CUSTOM-SELECTION] [--search-query SEARCH-QUERY ] [--filters FILTERS ] [--folder-id FOLDER-ID]
 ```
 
 
@@ -2192,15 +1635,15 @@ ibmcloud cloud-logs view-create --name NAME [--search-query SEARCH-QUERY | --sea
 
     The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
 
-`--search-query` ([`ApisViewsV1SearchQuery`](#cli-apis-views-v1-search-query-example-schema))
-:   View search query. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--search-query=@path/to/file.json`.
-
 `--time-selection` ([`ApisViewsV1TimeSelection`](#cli-apis-views-v1-time-selection-example-schema))
 :   View time selection. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
 
     Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--time-selection=@path/to/file.json`.
+
+`--search-query` ([`ApisViewsV1SearchQuery`](#cli-apis-views-v1-search-query-example-schema))
+:   View search query. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
+
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--search-query=@path/to/file.json`.
 
 `--filters` ([`ApisViewsV1SelectedFilters`](#cli-apis-views-v1-selected-filters-example-schema))
 :   View selected filters. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
@@ -2212,11 +1655,6 @@ ibmcloud cloud-logs view-create --name NAME [--search-query SEARCH-QUERY | --sea
 
     The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/`.
 
-`--search-query-query` (string)
-:   View search query. This option provides a value for a sub-field of the JSON option 'search-query'. It is mutually exclusive with that option.
-
-    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
 `--time-selection-quick-selection` ([`ApisViewsV1QuickTimeSelection`](#cli-apis-views-v1-quick-time-selection-example-schema))
 :   Quick time selection. This option provides a value for a sub-field of the JSON option 'time-selection'. It is mutually exclusive with that option.
 
@@ -2227,21 +1665,14 @@ ibmcloud cloud-logs view-create --name NAME [--search-query SEARCH-QUERY | --sea
 
     Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--time-selection-custom-selection=@path/to/file.json`.
 
-`--filters-filters` ([`ApisViewsV1Filter[]`](#cli-apis-views-v1-filter-example-schema))
-:   Selected filters. This option provides a value for a sub-field of the JSON option 'filters'. It is mutually exclusive with that option.
-
-    The maximum length is `4096` items. The minimum length is `1` item.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--filters-filters=@path/to/file.json`.
-
 #### Examples
 {: #cloud-logs-view-create-examples}
 
 ```text
 ibmcloud cloud-logs view-create \
     --name 'Logs view' \
-    --search-query '{"query": "logs"}' \
     --time-selection '{"custom_selection": {"from_time": "2024-01-25T11:31:43.152Z", "to_time": "2024-01-25T11:37:13.238Z"}}' \
+    --search-query '{"query": "logs"}' \
     --filters '{"filters": [{"name": "applicationName", "selected_values": {}}]}' \
     --folder-id 9fab83da-98cb-4f18-a7ba-b6f0435c9673
 ```
@@ -2252,8 +1683,8 @@ Alternatively, granular options are available for the sub-fields of JSON string 
 ibmcloud cloud-logs view-create \
     --name 'Logs view' \
     --folder-id 9fab83da-98cb-4f18-a7ba-b6f0435c9673 \
-    --search-query-query error \
     --time-selection-custom-selection apisViewsV1CustomTimeSelection \
+    --search-query-query error \
     --filters-filters '[apisViewsV1Filter]'
 ```
 {: pre}
@@ -2283,18 +1714,18 @@ ibmcloud cloud-logs view \
 ```
 {: pre}
 
-### `ibmcloud cloud-logs view-replace`
-{: #cloud-logs-cli-view-replace-command}
+### `ibmcloud cloud-logs view-update`
+{: #cloud-logs-cli-view-update-command}
 
 Replaces an existing view.
 
 ```text
-ibmcloud cloud-logs view-replace --id ID --name NAME [--search-query SEARCH-QUERY | --search-query-query SEARCH-QUERY-QUERY] [--time-selection TIME-SELECTION | --time-selection-quick-selection TIME-SELECTION-QUICK-SELECTION --time-selection-custom-selection TIME-SELECTION-CUSTOM-SELECTION] [--filters FILTERS | --filters-filters FILTERS-FILTERS] [--folder-id FOLDER-ID]
+ibmcloud cloud-logs view-update --id ID --name NAME [--time-selection TIME-SELECTION | --time-selection-quick-selection TIME-SELECTION-QUICK-SELECTION --time-selection-custom-selection TIME-SELECTION-CUSTOM-SELECTION] [--search-query SEARCH-QUERY ] [--filters FILTERS ] [--folder-id FOLDER-ID]
 ```
 
 
 #### Command options
-{: #cloud-logs-view-replace-cli-options}
+{: #cloud-logs-view-update-cli-options}
 
 `--id` (int64)
 :   View ID. Required.
@@ -2304,15 +1735,15 @@ ibmcloud cloud-logs view-replace --id ID --name NAME [--search-query SEARCH-QUER
 
     The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
 
-`--search-query` ([`ApisViewsV1SearchQuery`](#cli-apis-views-v1-search-query-example-schema))
-:   View search query. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--search-query=@path/to/file.json`.
-
 `--time-selection` ([`ApisViewsV1TimeSelection`](#cli-apis-views-v1-time-selection-example-schema))
 :   View time selection. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
 
     Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--time-selection=@path/to/file.json`.
+
+`--search-query` ([`ApisViewsV1SearchQuery`](#cli-apis-views-v1-search-query-example-schema))
+:   View search query. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
+
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--search-query=@path/to/file.json`.
 
 `--filters` ([`ApisViewsV1SelectedFilters`](#cli-apis-views-v1-selected-filters-example-schema))
 :   View selected filters. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
@@ -2324,11 +1755,6 @@ ibmcloud cloud-logs view-replace --id ID --name NAME [--search-query SEARCH-QUER
 
     The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/`.
 
-`--search-query-query` (string)
-:   View search query. This option provides a value for a sub-field of the JSON option 'search-query'. It is mutually exclusive with that option.
-
-    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
-
 `--time-selection-quick-selection` ([`ApisViewsV1QuickTimeSelection`](#cli-apis-views-v1-quick-time-selection-example-schema))
 :   Quick time selection. This option provides a value for a sub-field of the JSON option 'time-selection'. It is mutually exclusive with that option.
 
@@ -2339,22 +1765,16 @@ ibmcloud cloud-logs view-replace --id ID --name NAME [--search-query SEARCH-QUER
 
     Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--time-selection-custom-selection=@path/to/file.json`.
 
-`--filters-filters` ([`ApisViewsV1Filter[]`](#cli-apis-views-v1-filter-example-schema))
-:   Selected filters. This option provides a value for a sub-field of the JSON option 'filters'. It is mutually exclusive with that option.
-
-    The maximum length is `4096` items. The minimum length is `1` item.
-
-    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--filters-filters=@path/to/file.json`.
 
 #### Examples
-{: #cloud-logs-view-replace-examples}
+{: #cloud-logs-view-update-examples}
 
 ```text
-ibmcloud cloud-logs view-replace \
+ibmcloud cloud-logs view-update \
     --id 52 \
     --name 'Logs view' \
-    --search-query '{"query": "logs new"}' \
     --time-selection '{"custom_selection": {"from_time": "2024-01-25T11:31:43.152Z", "to_time": "2024-01-25T11:37:13.238Z"}}' \
+    --search-query '{"query": "logs new"}' \
     --filters '{"filters": [{"name": "applicationName", "selected_values": {}}]}' \
     --folder-id 9fab83da-98cb-4f18-a7ba-b6f0435c9673
 ```
@@ -2362,12 +1782,12 @@ ibmcloud cloud-logs view-replace \
 
 Alternatively, granular options are available for the sub-fields of JSON string options:
 ```text
-ibmcloud cloud-logs view-replace \
+ibmcloud cloud-logs view-update \
     --id 52 \
     --name 'Logs view' \
     --folder-id 9fab83da-98cb-4f18-a7ba-b6f0435c9673 \
-    --search-query-query error \
     --time-selection-custom-selection apisViewsV1CustomTimeSelection \
+    --search-query-query error \
     --filters-filters '[apisViewsV1Filter]'
 ```
 {: pre}
@@ -2397,8 +1817,8 @@ ibmcloud cloud-logs view-delete \
 ```
 {: pre}
 
-## ViewsFoldersService
-{: #cloud-logs-views-folders-service-cli}
+## Folders for views
+{: #cloud-logs-folders-for-views-cli}
 
 Create and manage view folders.
 
@@ -2474,18 +1894,18 @@ ibmcloud cloud-logs view-folder \
 ```
 {: pre}
 
-### `ibmcloud cloud-logs view-folder-replace`
-{: #cloud-logs-cli-view-folder-replace-command}
+### `ibmcloud cloud-logs view-folder-update`
+{: #cloud-logs-cli-view-folder-update-command}
 
 Replaces an existing view folder.
 
 ```text
-ibmcloud cloud-logs view-folder-replace --id ID --name NAME
+ibmcloud cloud-logs view-folder-update --id ID --name NAME
 ```
 
 
 #### Command options
-{: #cloud-logs-view-folder-replace-cli-options}
+{: #cloud-logs-view-folder-update-cli-options}
 
 `--id` (strfmt.UUID)
 :   Folder ID. Required.
@@ -2498,10 +1918,10 @@ ibmcloud cloud-logs view-folder-replace --id ID --name NAME
     The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
 
 #### Example
-{: #cloud-logs-view-folder-replace-examples}
+{: #cloud-logs-view-folder-update-examples}
 
 ```text
-ibmcloud cloud-logs view-folder-replace \
+ibmcloud cloud-logs view-folder-update \
     --id 3dc02998-0b50-4ea8-b68a-4779d716fa1f \
     --name 'My Folder'
 ```
@@ -2534,6 +1954,319 @@ ibmcloud cloud-logs view-folder-delete \
 ```
 {: pre}
 
+## Data access rules
+{: #cloud-logs-data-access-rules-cli}
+
+Create and manage Data Access Rules.
+
+### `ibmcloud cloud-logs data-access-rules`
+{: #cloud-logs-cli-data-access-rules-command}
+
+List service instance's Data Access Rules with provided ids.
+
+```text
+ibmcloud cloud-logs data-access-rules [--id ID]
+```
+
+
+#### Command options
+{: #cloud-logs-data-access-rules-cli-options}
+
+`--id` ([]strfmt.UUID)
+:   Array of data access rule IDs.
+
+    The list items must match regular expression `/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/`. The maximum length is `4096` items. The minimum length is `0` items.
+
+#### Example
+{: #cloud-logs-data-access-rules-examples}
+
+```text
+ibmcloud cloud-logs data-access-rules \
+    --id 4f966911-4bda-407e-b069-477394effa59
+```
+{: pre}
+
+### `ibmcloud cloud-logs data-access-rule-create`
+{: #cloud-logs-cli-data-access-rule-create-command}
+
+Create a Data Access Rule.
+
+```text
+ibmcloud cloud-logs data-access-rule-create --display-name DISPLAY-NAME --filters FILTERS --default-expression DEFAULT-EXPRESSION [--description DESCRIPTION]
+```
+
+
+#### Command options
+{: #cloud-logs-data-access-rule-create-cli-options}
+
+`--display-name` (string)
+:   Display Name for new Data Access Rule. Required.
+
+    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
+
+`--filters` ([`DataAccessRuleFilter[]`](#cli-data-access-rule-filter-example-schema))
+:   Filters for new Data Access Rule. Required.
+
+    The maximum length is `4096` items. The minimum length is `0` items.
+
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--filters=@path/to/file.json`.
+
+`--default-expression` (string)
+:   Default Expression for new Data Access Rule. Required.
+
+    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|'<> ]+$/`.
+
+`--description` (string)
+:   Description for new Data Access Rule.
+
+    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\-\\s]+$/`.
+
+#### Example
+{: #cloud-logs-data-access-rule-create-examples}
+
+```text
+ibmcloud cloud-logs data-access-rule-create \
+    --display-name 'Test Data Access Rule' \
+    --filters '[{"entity_type": "logs", "expression": "<v1> foo == \'bar\'"}]' \
+    --default-expression '<v1>true' \
+    --description 'Data Access Rule intended for testing'
+```
+{: pre}
+
+### `ibmcloud cloud-logs data-access-rule-update`
+{: #cloud-logs-cli-data-access-rule-update-command}
+
+Update a Data Access Rule.
+
+```text
+ibmcloud cloud-logs data-access-rule-update --id ID --display-name DISPLAY-NAME --filters FILTERS --default-expression DEFAULT-EXPRESSION [--description DESCRIPTION]
+```
+
+
+#### Command options
+{: #cloud-logs-data-access-rule-update-cli-options}
+
+`--id` (strfmt.UUID)
+:   ID of Data Access Rule to be deleted. Required.
+
+    The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/`.
+
+`--display-name` (string)
+:   Display Name for new Data Access Rule. Required.
+
+    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
+
+`--filters` ([`DataAccessRuleFilter[]`](#cli-data-access-rule-filter-example-schema))
+:   Filters for new Data Access Rule. Required.
+
+    The maximum length is `4096` items. The minimum length is `0` items.
+
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--filters=@path/to/file.json`.
+
+`--default-expression` (string)
+:   Default Expression for new Data Access Rule. Required.
+
+    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|'<> ]+$/`.
+
+`--description` (string)
+:   Description for new Data Access Rule.
+
+    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\-\\s]+$/`.
+
+#### Example
+{: #cloud-logs-data-access-rule-update-examples}
+
+```text
+ibmcloud cloud-logs data-access-rule-update \
+    --id 3dc02998-0b50-4ea8-b68a-4779d716fa1f \
+    --display-name 'Test Data Access Rule' \
+    --filters '[{"entity_type": "logs", "expression": "<v1> foo == \'bar\'"}]' \
+    --default-expression '<v1>true' \
+    --description 'Data Access Rule intended for testing'
+```
+{: pre}
+
+### `ibmcloud cloud-logs data-access-rule-delete`
+{: #cloud-logs-cli-data-access-rule-delete-command}
+
+Delete a Data Access Rule.
+
+```text
+ibmcloud cloud-logs data-access-rule-delete --id ID
+```
+
+
+#### Command options
+{: #cloud-logs-data-access-rule-delete-cli-options}
+
+`--id` (strfmt.UUID)
+:   ID of Data Access Rule to be deleted. Required.
+
+    The maximum length is `36` characters. The minimum length is `36` characters. The value must match regular expression `/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/`.
+
+#### Example
+{: #cloud-logs-data-access-rule-delete-examples}
+
+```text
+ibmcloud cloud-logs data-access-rule-delete \
+    --id 3dc02998-0b50-4ea8-b68a-4779d716fa1f
+```
+{: pre}
+
+## Enrichments
+{: #cloud-logs-enrichments-cli}
+
+Create and manage enrichments.
+
+### `ibmcloud cloud-logs enrichments`
+{: #cloud-logs-cli-enrichments-command}
+
+List all enrichments.
+
+```text
+ibmcloud cloud-logs enrichments
+```
+
+
+#### Example
+{: #cloud-logs-enrichments-examples}
+
+```text
+ibmcloud cloud-logs enrichments
+```
+{: pre}
+
+### `ibmcloud cloud-logs enrichment-create`
+{: #cloud-logs-cli-enrichment-create-command}
+
+Create an enrichment.
+
+```text
+ibmcloud cloud-logs enrichment-create --field-name FIELD-NAME [--enrichment-type ENRICHMENT-TYPE | --enrichment-type-geo-ip ENRICHMENT-TYPE-GEO-IP --enrichment-type-suspicious-ip ENRICHMENT-TYPE-SUSPICIOUS-IP --enrichment-type-custom-enrichment ENRICHMENT-TYPE-CUSTOM-ENRICHMENT]
+```
+
+
+#### Command options
+{: #cloud-logs-enrichment-create-cli-options}
+
+`--field-name` (string)
+:   The name of the field to enrich. Required.
+
+    The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
+
+`--enrichment-type` ([`EnrichmentV1EnrichmentType`](#cli-enrichment-v1-enrichment-type-example-schema))
+:   The enrichment type. This JSON option can instead be provided by setting individual fields with other options. It is mutually exclusive with those options.
+
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--enrichment-type=@path/to/file.json`.
+
+`--enrichment-type-geo-ip` ([`EnrichmentV1GeoIpTypeEmpty`](#cli-enrichment-v1-geo-ip-type-empty-example-schema))
+:   The geo ip enrichment. This option provides a value for a sub-field of the JSON option 'enrichment-type'. It is mutually exclusive with that option.
+
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--enrichment-type-geo-ip=@path/to/file.json`.
+
+`--enrichment-type-suspicious-ip` ([`EnrichmentV1SuspiciousIpTypeEmpty`](#cli-enrichment-v1-suspicious-ip-type-empty-example-schema))
+:   The suspicious ip enrichment. This option provides a value for a sub-field of the JSON option 'enrichment-type'. It is mutually exclusive with that option.
+
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--enrichment-type-suspicious-ip=@path/to/file.json`.
+
+`--enrichment-type-custom-enrichment` ([`EnrichmentV1CustomEnrichmentType`](#cli-enrichment-v1-custom-enrichment-type-example-schema))
+:   The custom enrichment. This option provides a value for a sub-field of the JSON option 'enrichment-type'. It is mutually exclusive with that option.
+
+    Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--enrichment-type-custom-enrichment=@path/to/file.json`.
+
+#### Examples
+{: #cloud-logs-enrichment-create-examples}
+
+```text
+ibmcloud cloud-logs enrichment-create \
+    --field-name ip \
+    --enrichment-type '{"geo_ip": {}}'
+```
+{: pre}
+
+Alternatively, granular options are available for the sub-fields of JSON string options:
+```text
+ibmcloud cloud-logs enrichment-create \
+    --field-name ip \
+    --enrichment-type-geo-ip enrichmentV1GeoIpTypeEmpty
+```
+{: pre}
+
+### `ibmcloud cloud-logs enrichment-delete`
+{: #cloud-logs-cli-enrichment-delete-command}
+
+Delete enrichments.
+
+```text
+ibmcloud cloud-logs enrichment-delete --id ID
+```
+
+
+#### Command options
+{: #cloud-logs-enrichment-delete-cli-options}
+
+`--id` (int64)
+:   The enrichment ID. Required.
+
+    The maximum value is `4294967295`. The minimum value is `0`.
+
+#### Example
+{: #cloud-logs-enrichment-delete-examples}
+
+```text
+ibmcloud cloud-logs enrichment-delete \
+    --id 1
+```
+{: pre}
+
+## Data usage metrics
+{: #cloud-logs-data-usage-metrics-cli}
+
+Data usage service.
+
+### `ibmcloud cloud-logs data-usage-metrics-export-status`
+{: #cloud-logs-cli-data-usage-metrics-export-status-command}
+
+Get data usage metrics export status.
+
+```text
+ibmcloud cloud-logs data-usage-metrics-export-status
+```
+
+
+#### Example
+{: #cloud-logs-data-usage-metrics-export-status-examples}
+
+```text
+ibmcloud cloud-logs data-usage-metrics-export-status
+```
+{: pre}
+
+### `ibmcloud cloud-logs data-usage-metrics-export-status-update`
+{: #cloud-logs-cli-data-usage-metrics-export-status-update-command}
+
+Update data usage metrics export status.
+
+```text
+ibmcloud cloud-logs data-usage-metrics-export-status-update --enabled ENABLED
+```
+
+
+#### Command options
+{: #cloud-logs-data-usage-metrics-export-status-update-cli-options}
+
+`--enabled` (bool)
+:   The "enabled" parameter for metrics export. Required.
+
+#### Example
+{: #cloud-logs-data-usage-metrics-export-status-update-examples}
+
+```text
+ibmcloud cloud-logs data-usage-metrics-export-status-update \
+    --enabled true
+```
+{: pre}
+
 ## QueryService
 {: #cloud-logs-query-service-cli}
 
@@ -2545,7 +2278,7 @@ Query and process your logs.
 Run a query to search the logs.
 
 ```text
-ibmcloud cloud-logs query --query QUERY [--metadata METADATA | --metadata-start-date METADATA-START-DATE --metadata-end-date METADATA-END-DATE --metadata-default-source METADATA-DEFAULT-SOURCE --metadata-tier METADATA-TIER --metadata-syntax METADATA-SYNTAX --metadata-limit METADATA-LIMIT --metadata-strict-fields-validation METADATA-STRICT-FIELDS-VALIDATION] [--since SINCE] [--local-time LOCAL-TIME]
+ibmcloud cloud-logs query --query QUDATAPRIME_OR_LUCENE_QUERY [--metadata METADATA | --start-date START-DATE --end-date END-DATE --default-source DEFAULT-SOURCE --tier TIER --syntax SYNTAX --limit LIMIT --strict-fields-validation STRICT-FIELDS-VALIDATION] [--since SINCE] [--local-time LOCAL-TIME]
 ```
 
 #### Command options
@@ -2561,31 +2294,31 @@ ibmcloud cloud-logs query --query QUERY [--metadata METADATA | --metadata-start-
 
     Provide a JSON string option or specify a JSON file to read from by providing a filepath option that begins with a `@`, e.g. `--metadata=@path/to/file.json`.
 
-`--metadata-start-date` (strfmt.DateTime)
+`--start-date` (strfmt.DateTime)
 :   Beginning of the time range for the query. Default: end - 15 min or current time - 15 min if end is not defined. This option provides a value for a sub-field of the JSON option 'metadata'. It is mutually exclusive with that option.
 
-`--metadata-end-date` (strfmt.DateTime)
+`--end-date` (strfmt.DateTime)
 :   End of the time range for the query. Default: start + 15 min or current time if start is not defined. This option provides a value for a sub-field of the JSON option 'metadata'. It is mutually exclusive with that option.
 
-`--metadata-default-source` (string)
+`--default-source` (string)
 :   Default value for the source to be used when the source is omitted in a query. This option provides a value for a sub-field of the JSON option 'metadata'. It is mutually exclusive with that option.
 
     The maximum length is `4096` characters. The minimum length is `1` character. The value must match regular expression `/^[A-Za-z0-9_\\.,\\-"{}()\\[\\]=!:#\/$|' ]+$/`.
 
-`--metadata-tier` (string)
+`--tier` (string)
 :   Tier on which the query runs. This option provides a value for a sub-field of the JSON option 'metadata'. It is mutually exclusive with that option.
 
     Allowable values are: `unspecified`, `archive`, `frequent_search`.
 
-`--metadata-syntax` (string)
+`--syntax` (string)
 :   The syntax in which the query is written. This option provides a value for a sub-field of the JSON option 'metadata'. It is mutually exclusive with that option.
 
     Allowable values are: `unspecified`, `lucene`, `dataprime`.
 
-`--metadata-limit` (int64)
+`--limit` (int64)
 :   Limit the number of results. Default: 2000; max for TIER_FREQUENT_SEARCH: 12000; max for TIER_ARCHIVE: 50000. This option provides a value for a sub-field of the JSON option 'metadata'. It is mutually exclusive with that option.
 
-`--metadata-strict-fields-validation` (bool)
+`--strict-fields-validation` (bool)
 :   Prohibit the use of unknown fields, i.e., those not detected in the ingested data. Default: false. This option provides a value for a sub-field of the JSON option 'metadata'. It is mutually exclusive with that option.
 
 `--since` (duration)
@@ -2605,16 +2338,17 @@ ibmcloud cloud-logs query \
 {: pre}
 
 Alternatively, granular options are available for the sub-fields of JSON string options:
+
 ```text
 ibmcloud cloud-logs query \
     --query 'source logs | filter $d.apiVersion == 42' \
-    --metadata-start-date 2021-01-01T00:00:00.000Z \
-    --metadata-end-date 2021-01-01T00:00:00.000Z \
-    --metadata-default-source logs \
-    --metadata-tier frequent_search \
-    --metadata-syntax dataprime \
-    --metadata-limit 2000 \
-    --metadata-strict-fields-validation true
+    --start-date 2021-01-01T00:00:00.000Z \
+    --end-date 2021-01-01T00:00:00.000Z \
+    --default-source logs \
+    --tier frequent_search \
+    --syntax dataprime \
+    --limit 2000 \
+    --strict-fields-validation true
 ```
 {: pre}
 
@@ -2650,6 +2384,48 @@ The following example shows the format of the AlertsV1AlertActiveWhen object.
 ```
 {: codeblock}
 
+### AlertsV1AlertFilters
+{: #cli-alerts-v1-alert-filters-example-schema}
+
+The following example shows the format of the AlertsV1AlertFilters object.
+
+```json
+
+{
+  "severities" : [ "debug_or_unspecified", "verbose", "info", "warning", "error", "critical" ],
+  "metadata" : {
+    "applications" : [ "CpuMonitoring", "WebApi" ],
+    "subsystems" : [ "SnapshotGenerator", "PermissionControl" ]
+  },
+  "alias" : "monitorQuery",
+  "text" : "initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create",
+  "ratio_alerts" : [ {
+    "alias" : "TopLevelAlert",
+    "text" : "_exists_:\"container_name\"",
+    "severities" : [ "debug_or_unspecified", "verbose", "info", "warning", "error", "critical" ],
+    "applications" : [ "CpuMonitoring", "WebApi" ],
+    "subsystems" : [ "SnapshotGenerator", "PermissionControl" ],
+    "group_by" : [ "Host", "Thread" ]
+  } ],
+  "filter_type" : "text_or_unspecified"
+}
+```
+{: codeblock}
+
+### AlertsV1AlertFiltersMetadataFilters
+{: #cli-alerts-v1-alert-filters-metadata-filters-example-schema}
+
+The following example shows the format of the AlertsV1AlertFiltersMetadataFilters object.
+
+```json
+
+{
+  "applications" : [ "CpuMonitoring", "WebApi" ],
+  "subsystems" : [ "SnapshotGenerator", "PermissionControl" ]
+}
+```
+{: codeblock}
+
 ### AlertsV1Date
 {: #cli-alerts-v1-date-example-schema}
 
@@ -2676,6 +2452,49 @@ The following example shows the format of the AlertsV1MetaLabel[] object.
   "key" : "env",
   "value" : "dev"
 } ]
+```
+{: codeblock}
+
+### AlertsV2AlertCondition
+{: #cli-alerts-v2-alert-condition-example-schema}
+
+The following example shows the format of the AlertsV2AlertCondition object.
+
+```json
+
+{
+  "more_than" : {
+    "parameters" : {
+      "threshold" : 1,
+      "timeframe" : "timeframe_10_min",
+      "group_by" : [ "coralogix.metadata.applicationName" ],
+      "metric_alert_parameters" : {
+        "metric_field" : "cpu_usage",
+        "metric_source" : "prometheus",
+        "arithmetic_operator" : "percentile",
+        "arithmetic_operator_modifier" : 1,
+        "sample_threshold_percentage" : 100,
+        "non_null_percentage" : 100,
+        "swap_null_values" : true
+      },
+      "metric_alert_promql_parameters" : {
+        "promql_text" : "sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)",
+        "arithmetic_operator_modifier" : 1,
+        "sample_threshold_percentage" : 100,
+        "non_null_percentage" : 100,
+        "swap_null_values" : true
+      },
+      "ignore_infinity" : true,
+      "relative_timeframe" : "hour_or_unspecified",
+      "cardinality_fields" : [ ],
+      "related_extended_data" : {
+        "cleanup_deadman_duration" : "cleanup_deadman_duration_24h",
+        "should_trigger_deadman" : true
+      }
+    },
+    "evaluation_window" : "rolling_or_unspecified"
+  }
+}
 ```
 {: codeblock}
 
@@ -2709,6 +2528,37 @@ The following example shows the format of the AlertsV2AlertNotificationGroups[] 
     "integration_id" : 123
   } ]
 } ]
+```
+{: codeblock}
+
+### ApisLogs2metricsV2LogsQuery
+{: #cli-apis-logs2metrics-v2-logs-query-example-schema}
+
+The following example shows the format of the ApisLogs2metricsV2LogsQuery object.
+
+```json
+
+{
+  "lucene" : "logs",
+  "alias" : "new_query",
+  "applicationname_filters" : [ "app_name" ],
+  "subsystemname_filters" : [ "sub_name" ],
+  "severity_filters" : [ "unspecified", "debug", "verbose", "info", "warning", "error", "critical" ]
+}
+```
+{: codeblock}
+
+### ApisViewsV1CustomTimeSelection
+{: #cli-apis-views-v1-custom-time-selection-example-schema}
+
+The following example shows the format of the ApisViewsV1CustomTimeSelection object.
+
+```json
+
+{
+  "from_time" : "2024-01-25T11:31:43.152Z",
+  "to_time" : "2024-01-25T11:37:13.238Z"
+}
 ```
 {: codeblock}
 
@@ -2757,150 +2607,41 @@ The following example shows the format of the ApisViewsV1TimeSelection object.
 ```
 {: codeblock}
 
-### Dashboard
-{: #cli-dashboard-example-schema}
+### DataAccessRuleFilter[]
+{: #cli-data-access-rule-filter-example-schema}
 
-The following example shows the format of the Dashboard object.
+The following example shows the format of the DataAccessRuleFilter[] object.
+
+```json
+
+[ {
+  "entity_type" : "logs",
+  "expression" : "<v1> foo == 'bar'"
+} ]
+```
+{: codeblock}
+
+### EnrichmentV1EnrichmentType
+{: #cli-enrichment-v1-enrichment-type-example-schema}
+
+The following example shows the format of the EnrichmentV1EnrichmentType object.
 
 ```json
 
 {
-  "href" : "6U1Q8Hpa263Se8PkRKaiE",
-  "id" : "6U1Q8Hpa263Se8PkRKaiE",
-  "name" : "DataUsageToMetrics Dashboard",
-  "description" : "This dashboard shows the performance of our production environment.",
-  "layout" : {
-    "sections" : [ {
-      "href" : "exampleString",
-      "id" : {
-        "value" : "9fab83da-98cb-4f18-a7ba-b6f0435c9673"
-      },
-      "rows" : [ {
-        "href" : "exampleString",
-        "id" : {
-          "value" : "9fab83da-98cb-4f18-a7ba-b6f0435c9673"
-        },
-        "appearance" : {
-          "height" : 19
-        },
-        "widgets" : [ {
-          "href" : "exampleString",
-          "id" : {
-            "value" : "9fab83da-98cb-4f18-a7ba-b6f0435c9673"
-          },
-          "title" : "Size",
-          "description" : "The average response time of the system",
-          "definition" : {
-            "line_chart" : {
-              "legend" : {
-                "is_visible" : true,
-                "columns" : [ "unspecified", "min", "max", "sum", "avg", "last", "name" ],
-                "group_by_query" : true
-              },
-              "tooltip" : {
-                "show_labels" : false,
-                "type" : "all"
-              },
-              "query_definitions" : [ {
-                "id" : "9fab83da-98cb-4f18-a7ba-b6f0435c9673",
-                "query" : {
-                  "metrics" : {
-                    "promql_query" : {
-                      "value" : "sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)"
-                    },
-                    "filters" : [ {
-                      "label" : "service",
-                      "operator" : {
-                        "equals" : {
-                          "selection" : {
-                            "all" : { }
-                          }
-                        }
-                      }
-                    } ]
-                  }
-                },
-                "series_name_template" : "{{severity}}",
-                "series_count_limit" : "20",
-                "unit" : "usd",
-                "scale_type" : "linear",
-                "name" : "Query1",
-                "is_visible" : true,
-                "color_scheme" : "classic",
-                "resolution" : {
-                  "interval" : "1m",
-                  "buckets_presented" : 96
-                },
-                "data_mode_type" : "archive"
-              } ],
-              "stacked_line" : "relative"
-            }
-          },
-          "created_at" : "2021-01-01T00:00:00.000Z",
-          "updated_at" : "2021-01-01T00:00:00.000Z"
-        } ]
-      } ]
-    } ]
-  },
-  "variables" : [ {
-    "name" : "service_name",
-    "definition" : {
-      "multi_select" : {
-        "source" : {
-          "logs_path" : {
-            "observation_field" : {
-              "keypath" : [ "applicationname" ],
-              "scope" : "metadata"
-            }
-          }
-        },
-        "selection" : {
-          "all" : { }
-        },
-        "values_order_direction" : "desc"
-      }
-    },
-    "display_name" : "Service Name"
-  } ],
-  "filters" : [ {
-    "source" : {
-      "logs" : {
-        "operator" : {
-          "equals" : {
-            "selection" : {
-              "all" : { }
-            }
-          }
-        },
-        "observation_field" : {
-          "keypath" : [ "applicationname" ],
-          "scope" : "metadata"
-        }
-      }
-    },
-    "enabled" : true,
-    "collapsed" : false
-  } ],
-  "annotations" : [ {
-    "href" : "9fab83da-98cb-4f18-a7ba-b6f0435c9673",
-    "id" : "9fab83da-98cb-4f18-a7ba-b6f0435c9673",
-    "name" : "Deployments",
-    "enabled" : true,
-    "source" : {
-      "metrics" : {
-        "promql_query" : {
-          "value" : "sum(up)"
-        },
-        "strategy" : {
-          "start_time_metric" : { }
-        },
-        "message_template" : "exampleString",
-        "labels" : [ "exampleString", "anotherExampleString" ]
-      }
-    }
-  } ],
-  "relative_time_frame" : "86400s"
+  "geo_ip" : { }
 }
+```
+{: codeblock}
+
+### EnrichmentV1GeoIpTypeEmpty
+{: #cli-enrichment-v1-geo-ip-type-empty-example-schema}
+
+The following example shows the format of the EnrichmentV1GeoIpTypeEmpty object.
+
+```json
+
+{ }
 ```
 {: codeblock}
 
@@ -2956,8 +2697,26 @@ The following example shows the format of the OutgoingWebhookPrototype object.
   "url" : "https://example.com",
   "ibm_event_notifications" : {
     "event_notifications_instance_id" : "9fab83da-98cb-4f18-a7ba-b6f0435c9673",
-    "region_id" : "eu-es"
+    "region_id" : "eu-es",
+    "source_id" : "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::",
+    "source_name" : "IBM Cloud Event Notifications"
   }
+}
+```
+{: codeblock}
+
+### OutgoingWebhooksV1IbmEventNotificationsConfig
+{: #cli-outgoing-webhooks-v1-ibm-event-notifications-config-example-schema}
+
+The following example shows the format of the OutgoingWebhooksV1IbmEventNotificationsConfig object.
+
+```json
+
+{
+  "event_notifications_instance_id" : "9fab83da-98cb-4f18-a7ba-b6f0435c9673",
+  "region_id" : "eu-es",
+  "source_id" : "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::",
+  "source_name" : "IBM Cloud Event Notifications"
 }
 ```
 {: codeblock}
@@ -2975,11 +2734,11 @@ The following example shows the format of the PolicyPrototype object.
   "priority" : "type_high",
   "application_rule" : {
     "rule_type_id" : "is",
-    "name" : "policy-test"
+    "name" : "test"
   },
   "subsystem_rule" : {
     "rule_type_id" : "is",
-    "name" : "policy-test"
+    "name" : "test"
   },
   "archive_retention" : {
     "id" : "9fab83da-98cb-4f18-a7ba-b6f0435c9673"
@@ -2987,6 +2746,46 @@ The following example shows the format of the PolicyPrototype object.
   "log_rules" : {
     "severities" : [ "unspecified", "debug", "verbose", "info", "warning", "error", "critical" ]
   }
+}
+```
+{: codeblock}
+
+### QuotaV1ArchiveRetention
+{: #cli-quota-v1-archive-retention-example-schema}
+
+The following example shows the format of the QuotaV1ArchiveRetention object.
+
+```json
+
+{
+  "id" : "9fab83da-98cb-4f18-a7ba-b6f0435c9673"
+}
+```
+{: codeblock}
+
+### QuotaV1LogRules
+{: #cli-quota-v1-log-rules-example-schema}
+
+The following example shows the format of the QuotaV1LogRules object.
+
+```json
+
+{
+  "severities" : [ "unspecified", "debug", "verbose", "info", "warning", "error", "critical" ]
+}
+```
+{: codeblock}
+
+### QuotaV1Rule
+{: #cli-quota-v1-rule-example-schema}
+
+The following example shows the format of the QuotaV1Rule object.
+
+```json
+
+{
+  "rule_type_id" : "is",
+  "name" : "test"
 }
 ```
 {: codeblock}
