@@ -6,7 +6,6 @@ toc:
     href: /docs/cloud-logs-cli-plugin
     path: cloud-logs-cli-plugin
     label: IBM Cloud Logs CLI
-    release-level: beta
   entries:
   - navgroup:
       id: reference
