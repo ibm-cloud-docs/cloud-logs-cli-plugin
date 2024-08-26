@@ -5,7 +5,7 @@ toc:
     audience: service
     href: /docs/cloud-logs-cli-plugin
     path: cloud-logs-cli-plugin
-    label: IBM Cloud Logs CLI
+    label: Cloud Logs CLI
   entries:
   - navgroup:
       id: reference
